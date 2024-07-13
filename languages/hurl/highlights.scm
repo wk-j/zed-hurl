@@ -1,174 +1,129 @@
-; General structure
-(hurl_file) @document
-(entry) @structure
+; highlights.scm
 
-; Request
-(request
-  method: (method) @keyword
-  url: (value_string) @string.special)
+"[QueryStringParams]" @property
+"[FormParams]" @property
+"[MultipartFormData]" @property
+"[Cookies]" @property
+"[Captures]" @property
+"[Asserts]" @property
+"[Options]" @property
+"[BasicAuth]" @property
 
-(header
-  key: (key_string) @variable.parameter
-  value: (value_string) @string)
+(comment) @comment @spell
 
-; Response
-(response
-  version: (version) @constant
-  status: (status) @number)
+(key_string) @property
+(json_key_string) @property
 
-; Sections
-((key_string) @keyword
- (#match? @keyword "^\\[(QueryStringParams|FormParams|MultipartFormData|Cookies|Captures|Asserts|BasicAuth|Options)\\]$"))
-
-; Key-Value pairs
-(key_value
-  key: (key_string) @variable.parameter
-  value: (value_string) @string)
-
-; File parameters
-(file_param
-  key: (key_string) @variable.parameter
-  value: (file_value) @string.special)
-
-; Captures and Asserts
-(capture
-  key: (key_string) @variable
-  query: (query) @function)
-
-(assert
-  query: (query) @function
-  predicate: (predicate) @function)
-
-; Options
-(option) @property
-
-; Queries
-(status_query) @function
-(url_query) @function
-(header_query) @function
-(cookie_query) @function
-(body_query) @function
-(xpath_query) @function
-(jsonpath_query) @function
-(regex_query) @function
-(variable_query) @function
-(duration_query) @function
-(bytes_query) @function
-(sha256_query) @function
-(md5_query) @function
-
-; Predicates
-(predicate_func) @function
-
-; Filters
-(filter) @function
-
-; JSON
-(json_value) @string
-(json_object) @punctuation.bracket
-(json_array) @punctuation.bracket
-(json_key_value
-  key: (json_string) @variable.parameter
-  value: (_) @string)
-(json_number) @number
-
-; XML
-(xml) @tag
-
-; Strings
-(quoted_string) @string
-(key_string) @string
 (value_string) @string
-(oneline_string) @string
-(multiline_string) @string
-(filename) @string
+(quoted_string) @string
+(json_string) @string
+(file_value) @string.special
+(regex) @string.regex
 
-; Numbers
-(integer) @number
-(float) @number
+"\\" @string.escape
+(regex_escaped_char) @string.escape
+(quoted_string_escaped_char) @string.escape
+(key_string_escaped_char) @string.escape
+(value_string_escaped_char) @string.escape
+(oneline_string_escaped_char) @string.escape
+(multiline_string_escaped_char) @string.escape
+(filename_escaped_char) @string.escape
+(json_string_escaped_char) @string.escape
 
-; Boolean and Null
-((value_string) @constant.builtin
- (#match? @constant.builtin "^(true|false|null)$"))
+(method) @type.builtin
+(multiline_string_type) @type
 
-; Variables and Templates
+"status" @function.builtin
+"url" @function.builtin
+"header" @function.builtin
+"cookie" @function.builtin
+"body" @function.builtin
+"xpath" @function.builtin
+"jsonpath" @function.builtin
+"regex" @function.builtin
+"variable" @function.builtin
+"duration" @function.builtin
+"sha256" @function.builtin
+"md5" @function.builtin
+"bytes" @function.builtin
+"daysAfterNow" @function.builtin
+"daysBeforeNow" @function.builtin
+"htmlEscape" @function.builtin
+"htmlUnescape" @function.builtin
+"decode" @function.builtin
+"format" @function.builtin
+"nth" @function.builtin
+"replace" @function.builtin
+"split" @function.builtin
+"toDate" @function.builtin
+"toInt" @function.builtin
+"urlEncode" @function.builtin
+"urlDecode" @function.builtin
+"count" @function.builtin
+
+(filter) @attribute
+
+(version) @string.special
+
+"null" @constant.builtin
+"cacert" @constant.builtin
+"compressed" @constant.builtin
+"location" @constant.builtin
+"insecure" @constant.builtin
+"path-as-is" @constant.builtin
+"proxy" @constant.builtin
+"max-redirs" @constant.builtin
+"retry" @constant.builtin
+"retry-interval" @constant.builtin
+"retry-max-count" @constant.builtin
+(variable_option "variable") @constant.builtin
+"verbose" @constant.builtin
+"very-verbose" @constant.builtin
+
+(boolean) @boolean
+
 (variable_name) @variable
-(template) @punctuation.special
 
-; Comments
-(comment) @comment
+"not" @keyword.operator
+"equals" @keyword.operator
+"==" @operator
+"notEquals" @keyword.operator
+"!=" @operator
+"greaterThan" @keyword.operator
+">" @operator
+"greaterThanOrEquals" @keyword.operator
+">=" @operator
+"lessThan" @keyword.operator
+"<" @operator
+"lessThanOrEquals" @keyword.operator
+"<=" @operator
+"startsWith" @keyword.operator
+"endsWith" @keyword.operator
+"contains" @keyword.operator
+"matches" @keyword.operator
+"exists" @keyword.operator
+"includes" @keyword.operator
+"isInteger" @keyword.operator
+"isFloat" @keyword.operator
+"isBoolean" @keyword.operator
+"isString" @keyword.operator
+"isCollection" @keyword.operator
 
-; Punctuation
+(integer) @number
+(float) @float
+(status) @number
+(json_number) @float
+
+":" @punctuation.delimiter
+"," @punctuation.delimiter
+
 "[" @punctuation.bracket
 "]" @punctuation.bracket
 "{" @punctuation.bracket
 "}" @punctuation.bracket
-"(" @punctuation.bracket
-")" @punctuation.bracket
-"," @punctuation.delimiter
-":" @punctuation.delimiter
-";" @punctuation.delimiter
+"{{" @punctuation.special
+"}}" @punctuation.special
 
-; Operators
-"==" @operator
-"!=" @operator
-">" @operator
-">=" @operator
-"<" @operator
-"<=" @operator
-"startsWith" @operator
-"endsWith" @operator
-"contains" @operator
-"matches" @operator
-"exists" @operator
-"isEmpty" @operator
-"includes" @operator
-
-; Keywords
-"not" @keyword
-
-; HTTP Methods
-((method) @keyword.http_method
- (#match? @keyword.http_method "^(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS|TRACE|CONNECT)$"))
-
-; HTTP Status Codes
-((status) @constant.numeric.http_status
- (#match? @constant.numeric.http_status "^[1-5][0-9][0-9]$"))
-
-; Capture Section
-(captures_section
-  "[Captures]" @keyword.section
-  (capture
-    key: (key_string) @variable.capture
-    query: (query) @function.query
-    (filter)? @function.filter))
-
-; JSON body
-(body
-  (json_object) @string.json)
-
-; Asserts Section
-(asserts_section
-  "[Asserts]" @keyword.section
-  (assert
-    query: (query) @function.query
-    predicate: (predicate) @function.predicate))
-
-; Improved highlighting for multiline strings
-(multiline_string
-  "```" @punctuation.delimiter.multiline_string
-  type: (_)? @constant.language.multiline_string_type
-  content: (_) @string.multiline)
-
-; Improved highlighting for templates
-(template
-  "{{" @punctuation.special.template_start
-  (expr) @expression.template
-  "}}" @punctuation.special.template_end)
-
-; Highlight file parameters
-(file_param
-  key: (key_string) @variable.parameter
-  value: (file_value
-    filename: (filename) @string.special.filename
-    contenttype: (file_contenttype)? @constant.mime_type))
+"base64," @string.special
+"file," @string.special
+"hex," @string.special

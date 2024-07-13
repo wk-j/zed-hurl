@@ -5,3 +5,7 @@ version = "0.1.0"
 schema_version = 1
 repository = "https://github.com/wk-j/zed-hurl"
 authors = ["wk-j"]
+
+[grammars.hurl]
+repository = "https://github.com/pfeiferj/tree-sitter-hurl.git"
+commit = "ad705af8c44c737bdb965fc081329c50716d2d03"

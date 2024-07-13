@@ -1,3 +1,19 @@
 name = "HURL"
 path_suffixes = ["hurl"]
 line_comments = ["# "]
+indent = [
+    "section",
+    "entry",
+    "multiline_string",
+    "json_object",
+    "json_array",
+    "xml_element",
+]
+auto_pairs = [
+    '(', ')',
+    '[', ']',
+    '{', '}',
+    '"', '"',
+    "'", "'",
+    '`', '`',
+]

@@ -26,3 +26,4 @@ Cargo.lock
 *.profdata
 
 *.wasm
+/grammars
