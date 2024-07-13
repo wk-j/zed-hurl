@@ -128,32 +128,47 @@
 "not" @keyword
 
 ; HTTP Methods
-((method) @keyword
- (#match? @keyword "^(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS|TRACE|CONNECT)$"))
+((method) @keyword.http_method
+ (#match? @keyword.http_method "^(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS|TRACE|CONNECT)$"))
 
 ; HTTP Status Codes
-((status) @number
- (#match? @number "^[1-5][0-9][0-9]$"))
+((status) @constant.numeric.http_status
+ (#match? @constant.numeric.http_status "^[1-5][0-9][0-9]$"))
 
 ; Capture Section
 (captures_section
-  "[Captures]" @keyword
+  "[Captures]" @keyword.section
   (capture
-    key: (key_string) @variable
-    query: (query) @function))
+    key: (key_string) @variable.capture
+    query: (query) @function.query
+    (filter)? @function.filter))
 
 ; JSON body
 (body
-  (json_object) @string)
+  (json_object) @string.json)
 
-; Improved HTTP status code highlighting
-((status) @constant
- (#match? @constant "^[1-5][0-9][0-9]$"))
+; Asserts Section
+(asserts_section
+  "[Asserts]" @keyword.section
+  (assert
+    query: (query) @function.query
+    predicate: (predicate) @function.predicate))
 
-; Improved capture section highlighting
-(captures_section
-  "[Captures]" @keyword
-  (capture
-    key: (key_string) @variable
-    query: (query) @function
-    (filter)? @function))
+; Improved highlighting for multiline strings
+(multiline_string
+  "```" @punctuation.delimiter.multiline_string
+  type: (_)? @constant.language.multiline_string_type
+  content: (_) @string.multiline)
+
+; Improved highlighting for templates
+(template
+  "{{" @punctuation.special.template_start
+  (expr) @expression.template
+  "}}" @punctuation.special.template_end)
+
+; Highlight file parameters
+(file_param
+  key: (key_string) @variable.parameter
+  value: (file_value
+    filename: (filename) @string.special.filename
+    contenttype: (file_contenttype)? @constant.mime_type))
