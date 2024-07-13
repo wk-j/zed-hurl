@@ -1,7 +1,7 @@
 id = "hurl"
 name = "HURL"
-description = "Hurl language support."
-version = "0.0.1"
+description = "Hurl language support for API testing and HTTP requests."
+version = "0.1.0"
 schema_version = 1
 repository = "https://github.com/wk-j/zed-hurl"
 authors = ["wk-j"]

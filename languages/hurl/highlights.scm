@@ -2,6 +2,10 @@
 (hurl_file) @document
 (entry) @structure
 
+; General structure
+(hurl_file) @document
+(entry) @structure
+
 ; Request
 (request
   method: (method) @keyword
@@ -67,7 +71,9 @@
 (json_value) @string
 (json_object) @punctuation.bracket
 (json_array) @punctuation.bracket
-(json_string) @string
+(json_key_value
+  key: (json_string) @variable.parameter
+  value: (_) @string)
 (json_number) @number
 
 ; XML
@@ -124,3 +130,18 @@
 
 ; Keywords
 "not" @keyword
+
+; HTTP Methods
+((method) @keyword
+ (#match? @keyword "^(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS|TRACE|CONNECT)$"))
+
+; HTTP Status Codes
+((status) @number
+ (#match? @number "^[1-5][0-9][0-9]$"))
+
+; Capture Section
+(captures_section
+  "[Captures]" @keyword
+  (capture
+    key: (key_string) @variable
+    query: (query) @function))
