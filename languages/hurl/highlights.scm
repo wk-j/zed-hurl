@@ -2,10 +2,6 @@
 (hurl_file) @document
 (entry) @structure
 
-; General structure
-(hurl_file) @document
-(entry) @structure
-
 ; Request
 (request
   method: (method) @keyword
@@ -145,3 +141,19 @@
   (capture
     key: (key_string) @variable
     query: (query) @function))
+
+; JSON body
+(body
+  (json_object) @string)
+
+; Improved HTTP status code highlighting
+((status) @constant
+ (#match? @constant "^[1-5][0-9][0-9]$"))
+
+; Improved capture section highlighting
+(captures_section
+  "[Captures]" @keyword
+  (capture
+    key: (key_string) @variable
+    query: (query) @function
+    (filter)? @function))
