@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Run Hurl Entry",
+    "command": "hurl",
+    "args": ["$ZED_FILE"],
+    "env": {},
+    "cwd": "${workspaceRoot}",
+    "scopes": ["file"],
+    "semanticScope": "runnable.hurl",
+    "clearTerminalBeforeExecuting": true
+  },
+  {
+    "label": "Run Hurl Entry (Verbose)",
+    "command": "hurl",
+    "args": ["--verbose", "$ZED_FILE"],
+    "env": {},
+    "cwd": "${workspaceRoot}",
+    "scopes": ["file"],
+    "semanticScope": "runnable.hurl",
+    "clearTerminalBeforeExecuting": true
+  }
+]
