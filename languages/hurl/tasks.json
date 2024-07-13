@@ -1,22 +1,25 @@
 [
-  {
-    "label": "Run Hurl Entry",
-    "command": "hurl",
-    "args": ["$ZED_FILE"],
-    "env": {},
-    "cwd": "${workspaceRoot}",
-    "scopes": ["file"],
-    "semanticScope": "runnable.hurl",
-    "clearTerminalBeforeExecuting": true
-  },
-  {
-    "label": "Run Hurl Entry (Verbose)",
-    "command": "hurl",
-    "args": ["--verbose", "$ZED_FILE"],
-    "env": {},
-    "cwd": "${workspaceRoot}",
-    "scopes": ["file"],
-    "semanticScope": "runnable.hurl",
-    "clearTerminalBeforeExecuting": true
-  }
+    {
+        "label": "Run Hurl script",
+        "command": "hurl",
+        "args": [
+            "$ZED_FILE"
+        ],
+        "tags": [
+            "hurl-script"
+        ]
+    },
+    {
+        "label": "Run Hurl entry",
+        "command": "hurl",
+        "args": [
+            "$ZED_FILE",
+            "--test",
+            "--glob",
+            "$ZED_SYMBOL"
+        ],
+        "tags": [
+            "hurl-entry"
+        ]
+    }
 ]

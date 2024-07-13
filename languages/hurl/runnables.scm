@@ -1,2 +1,7 @@
+; Hurl script
+((request) @run
+ (#set! tag hurl-script))
 
-((entry) @runnable)
+; Hurl entry
+((entry) @run
+ (#set! tag hurl-entry))

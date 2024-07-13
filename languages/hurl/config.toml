@@ -1,19 +1,13 @@
 name = "HURL"
+grammar = "hurl"
 path_suffixes = ["hurl"]
 line_comments = ["# "]
-indent = [
-    "section",
-    "entry",
-    "multiline_string",
-    "json_object",
-    "json_array",
-    "xml_element",
+autoclose_before = ",]}"
+brackets = [
+    { start = "{", end = "}", close = true, newline = true },
+    { start = "[", end = "]", close = true, newline = true },
+    { start = "(", end = ")", close = true, newline = false },
+    { start = "\"", end = "\"", close = true, newline = false, not_in = ["string"] },
+    { start = "'", end = "'", close = true, newline = false, not_in = ["string"] },
 ]
-auto_pairs = [
-    '(', ')',
-    '[', ']',
-    '{', '}',
-    '"', '"',
-    "'", "'",
-    '`', '`',
-]
+word_characters = ["-", "_"]

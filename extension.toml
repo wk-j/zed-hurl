@@ -1,10 +1,14 @@
 id = "hurl"
 name = "HURL"
 description = "Hurl language support for API testing and HTTP requests."
-version = "0.1.0"
+version = "0.2.0"
 schema_version = 1
 repository = "https://github.com/wk-j/zed-hurl"
 authors = ["wk-j"]
+
+[language_servers.hurl-language-server]
+name = "Hurl Language Server"
+language = "HURL"
 
 [grammars.hurl]
 repository = "https://github.com/pfeiferj/tree-sitter-hurl.git"
