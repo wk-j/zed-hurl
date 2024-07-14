@@ -6,10 +6,6 @@ schema_version = 1
 repository = "https://github.com/wk-j/zed-hurl"
 authors = ["wk-j"]
 
-[language_servers.hurl-language-server]
-name = "Hurl Language Server"
-language = "HURL"
-
 [grammars.hurl]
 repository = "https://github.com/pfeiferj/tree-sitter-hurl.git"
 commit = "ad705af8c44c737bdb965fc081329c50716d2d03"
